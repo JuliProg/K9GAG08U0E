@@ -28,16 +28,16 @@ namespace K9GAG08U0E
         {
             myChip.devManuf = "SAMSUNG";
             myChip.name = "K9GAG08U0E";
-            myChip.chipID = "ECF1001540";      // device ID - ECh F1h 00h 15h 40h (k9f1g08u0d_00.pdf page 36)
+            myChip.chipID = "ECD584725042";      // device ID - ECh F1h 00h 15h 40h (k9f1g08u0d_00.pdf page 36)
 
             myChip.width = Organization.x8;    // chip width - 8 bit
-            myChip.bytesPP = 2048;             // page size - 2048 byte (2Kb)
-            myChip.spareBytesPP = 64;          // size Spare Area - 64 byte
-            myChip.pagesPB = 64;               // the number of pages per block - 64 
-            myChip.bloksPLUN = 1024;           // number of blocks in CE - 1024
+            myChip.bytesPP = 8192;             // page size - 2048 byte (2Kb)
+            myChip.spareBytesPP = 436;          // size Spare Area - 64 byte
+            myChip.pagesPB = 128;               // the number of pages per block - 64 
+            myChip.bloksPLUN = 2076;           // number of blocks in CE - 1024
             myChip.LUNs = 1;                   // the amount of CE in the chip
             myChip.colAdrCycles = 2;           // cycles for column addressing
-            myChip.rowAdrCycles = 2;           // cycles for row addressing 
+            myChip.rowAdrCycles = 3;           // cycles for row addressing 
             myChip.vcc = Vcc.v3_3;             // supply voltage
 
         #endregion
@@ -71,9 +71,9 @@ namespace K9GAG08U0E
 
             myChip.registers.Add(
                 "Id Register").
-                Size(5).
-                Operations("ReadId_90h").               
-                Interpretation(ID_interpreting);          // From here
+                Size(6).
+                Operations("ReadId_90h");              
+                //Interpretation(ID_interpreting);          // From here
 
             #endregion
 
