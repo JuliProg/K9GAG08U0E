@@ -28,7 +28,7 @@ namespace K9GAG08U0E
         {
             myChip.devManuf = "SAMSUNG";
             myChip.name = "K9GAG08U0E";
-            myChip.chipID = "ECD584725042";      // device ID - ECh F1h 00h 15h 40h (k9f1g08u0d_00.pdf page 36)
+            myChip.chipID = "ECD584725042";      // device ID - ECh D5h 84h 72h 50h 42h (k9gag08u0e.pdf page 52)
 
             myChip.width = Organization.x8;    // chip width - 8 bit
             myChip.bytesPP = 8192;             // page size - 2048 byte (2Kb)
@@ -64,7 +64,7 @@ namespace K9GAG08U0E
                 "Status Register").
                 Size(1).
                 Operations("ReadStatus_70h").
-                Interpretation("SR_Interpreted").   //From ChipPart\SR_Interpreted.dll
+                Interpretation("SR_Interpreted").   //From ChipPart\SR_Interpreted.dll (https://github.com/JuliProg/Wiki/wiki/Status-Register-Interpretation)
                 UseAsStatusRegister();
 
 
