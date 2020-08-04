@@ -1,28 +1,31 @@
-![Create new chip](https://github.com/JuliProg/K9F1G08U0D/workflows/Create%20new%20chip/badge.svg?event=repository_dispatch)
+![Create new chip](https://github.com/JuliProg/K9GAG08U0E/workflows/Create%20new%20chip/badge.svg?event=repository_dispatch)
 # Join the development of the project ([list of tasks](https://github.com/users/JuliProg/projects/1))
 
 
-# K9F1G08U0D
-Implementation of the K9F1G08U0D chip for the JuliProg programmer
+# K9GAG08U0E
+Implementation of the K9GAG08U0E chip for the JuliProg programmer
 
 Dependency injection, DI based on MEF framework is used to connect the chip to the programmer.
 
 <section class = "listing">
 
+#
 ```c#
- public class ChipAssembly
+
+    public class ChipAssembly
     {
         [Export("Chip")]
         ChipPrototype myChip = new ChipPrototype();
 ```
-
-# Chip parameters
-
+# Chip parameters
 ```c#
-  ChipAssembly()
+
+
+        ChipAssembly()
         {
             myChip.devManuf = "SAMSUNG";
-            myChip.name = "K9F1G08U0D";
+            myChip.name = "K9GAG08U0E";
+            myChip.chipID = "ECF1001540";      // device ID - ECh F1h 00h 15h 40h (k9f1g08u0d_00.pdf page 36)
 
             myChip.width = Organization.x8;    // chip width - 8 bit
             myChip.bytesPP = 2048;             // page size - 2048 byte (2Kb)
@@ -34,29 +37,31 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
             myChip.rowAdrCycles = 2;           // cycles for row addressing 
             myChip.vcc = Vcc.v3_3;             // supply voltage
 
-  ```   
-
-# Chip operations
-
+```
+# Chip operations
 ```c#
-//------- Add chip operations ----------------------------------------------------
+
+
+            //------- Add chip operations ----------------------------------------------------
 
             myChip.Operations("Reset_FFh").
                    Operations("Erase_60h_D0h").
                    Operations("Read_00h_30h").
                    Operations("PageProgram_80h_10h");
+
 ```
-
-# Chip registers (optional)
-
+# Chip registers (optional)
 ```c#
-//------- Add chip registers ----------------------------------------------------
+
+
+            //------- Add chip registers (optional)----------------------------------------------------
 
             myChip.registers.Add(
                 "Status Register").
                 Size(1).
                 Operations("ReadStatus_70h").
-                Interpretation("StatusInterpreting@v1");   //From ChipPart\[some].dll
+                Interpretation("SR_Interpreted").   //From ChipPart\SR_Interpreted.dll
+                UseAsStatusRegister();
 
 
 
@@ -65,16 +70,16 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
                 Size(5).
                 Operations("ReadId_90h").               
                 Interpretation(ID_interpreting);          // From here
-                                            
+
 ```
-
-# Interpretation of ID-register values ​​(optional)
-
+# Interpretation of ID-register values ​​(optional)
 ```c#
-          public string ID_interpreting(Register register)
-          private string ID_decoding(byte bt, int pos)
-```
 
+
+        public string ID_interpreting(Register register)   
+        
+```
 </section>
+
 
 footer
