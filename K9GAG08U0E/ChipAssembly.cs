@@ -45,7 +45,7 @@ namespace K9GAG08U0E
 
             #region Chip operations
 
-            //------- Add chip operations ----------------------------------------------------
+            //------- Add chip operations    https://github.com/JuliProg/Wiki#command-set----------------------------------------------------
 
             myChip.Operations("Reset_FFh").
                    Operations("Erase_60h_D0h").
@@ -60,20 +60,20 @@ namespace K9GAG08U0E
 
             //------- Add chip registers (optional)----------------------------------------------------
 
-            myChip.registers.Add(
+            myChip.registers.Add(                   // https://github.com/JuliProg/Wiki/wiki/StatusRegister
                 "Status Register").
                 Size(1).
                 Operations("ReadStatus_70h").
-                Interpretation("SR_Interpreted").   //From ChipPart\SR_Interpreted.dll (https://github.com/JuliProg/Wiki/wiki/Status-Register-Interpretation)
+                Interpretation("SR_Interpreted").
                 UseAsStatusRegister();
 
 
 
-            myChip.registers.Add(
+            myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/ID-Register
                 "Id Register").
                 Size(6).
                 Operations("ReadId_90h");              
-                //Interpretation(ID_interpreting);          // From here
+                //Interpretation(ID_interpreting);
 
             #endregion
 
