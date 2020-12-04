@@ -1,0 +1,2 @@
+The first operation must be a command
+Reset !!!
