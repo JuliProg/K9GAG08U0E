@@ -69,7 +69,7 @@ namespace K9GAG08U0E
 
             //------- Select the Initial Invalid Block (s) algorithm    https://github.com/JuliProg/Wiki/wiki/InitialInvalidBlock-----------
 
-            myChip.InitialInvalidBlock = "InitInvalidBlock_v3";
+            myChip.InitialInvalidBlock = "InitInvalidBlock_v1";
 
             #endregion
 
