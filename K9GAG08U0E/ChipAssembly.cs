@@ -14,11 +14,16 @@ namespace K9GAG08U0E
     for automatically include <some code> in the READMY.md file in the repository
     */
 
-    
+    public class ChipPrototype_v1 : ChipPrototype
+    {
+        public int EccBits;
+    }
+
+
     public class ChipAssembly
     {
         [Export("Chip")]
-        ChipPrototype myChip = new ChipPrototype();
+        ChipPrototype myChip = new ChipPrototype_v1();
 
 
 
@@ -50,6 +55,7 @@ namespace K9GAG08U0E
             myChip.colAdrCycles = 2;            // cycles for column addressing        (k9gag08u0e.pdf page 9)
             myChip.rowAdrCycles = 3;            // cycles for row addressing           (k9gag08u0e.pdf page 9)
             myChip.vcc = Vcc.v3_3;              // supply voltage                      (k9gag08u0e.pdf page 5)
+            (myChip as ChipPrototype_v1).EccBits = 1;                // required Ecc bits for each 512 bytes
 
             #endregion
 
