@@ -40,6 +40,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
             myChip.colAdrCycles = 2;            // cycles for column addressing        (k9gag08u0e.pdf page 9)
             myChip.rowAdrCycles = 3;            // cycles for row addressing           (k9gag08u0e.pdf page 9)
             myChip.vcc = Vcc.v3_3;              // supply voltage                      (k9gag08u0e.pdf page 5)
+            (myChip as ChipPrototype_v1).EccBits = 1;                // required Ecc bits for each 512 bytes
 
 ```
 # Chip operations
@@ -93,6 +94,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
         
 ```
 </section>
+
 
 
 
